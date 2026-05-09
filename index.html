@@ -1,0 +1,83 @@
+!DOCTYPE html
+html lang=ko
+head
+    meta charset=UTF-8
+    meta name=viewport content=width=device-width, initial-scale=1.0
+    titleBackend Developer  김민도 포트폴리오title
+    script src=httpscdn.tailwindcss.comscript
+    link rel=stylesheet href=httpscdnjs.cloudflare.comajaxlibsfont-awesome6.0.0cssall.min.css
+    style
+        @import url('httpsfonts.googleapis.comcss2family=Pretendardwght@400;700;900&display=swap');
+        body { font-family 'Pretendard', sans-serif; scroll-behavior smooth; }
+        .tech-tag { @apply px-3 py-1 bg-slate-100 text-slate-600 rounded-full text-sm font-medium; }
+    style
+head
+body class=bg-slate-50 text-slate-900
+
+    header class=min-h-screen flex flex-col justify-center items-center bg-white border-b
+        div class=text-center px-4
+            span class=text-blue-600 font-bold tracking-widest uppercaseFirefighter to Backend Developerspan
+            h1 class=text-6xl mdtext-8xl font-black mt-4 mb-8 text-slate-900김민도span class=text-blue-600.spanh1
+            p class=text-xl text-slate-500 max-w-2xl mx-auto leading-relaxed
+                질문의 깊이가 설계의 수준을 결정합니다.br
+                현장의 안정성을 책임지던 소방관의 집요함으로, 흔들림 없는 백엔드 아키텍처를 설계합니다.
+            p
+            div class=mt-12 flex gap-4 justify-center
+                a href=#projects class=px-8 py-4 bg-slate-900 text-white font-bold rounded-full hoverbg-blue-600 transition-allView Projectsa
+                a href=httpsgithub.comyour-id class=px-8 py-4 border-2 border-slate-200 font-bold rounded-full hoverborder-slate-900 transition-allGitHuba
+            div
+        div
+    header
+
+    section id=projects class=py-24 px-4 max-w-6xl mx-auto
+        h2 class=text-4xl font-black mb-16 text-center text-slate-900 underline decoration-blue-500 decoration-8 underline-offset-8Featured Projectsh2
+        
+        div class=space-y-32
+            div class=grid mdgrid-cols-2 gap-12 items-center
+                div
+                    span class=text-blue-600 font-boldAuction Platformspan
+                    h3 class=text-4xl font-black mt-2 mb-6Jesiyo (제시요)h3
+                    p class=text-slate-600 mb-8 leading-relaxed
+                        WebSocket과 Redis를 활용한 고성능 실시간 경매 플랫폼입니다. 
+                        strongRedisson 분산 락strong을 통해 동시성 문제를 해결하고, k6 부하 테스트를 통해 응답 속도를 390배 개선했습니다.
+                    p
+                    div class=flex flex-wrap gap-2 mb-8
+                        span class=tech-tagSpring 5span span class=tech-tagMyBatisspan 
+                        span class=tech-tagRedisspan span class=tech-tagRedissonspan 
+                        span class=tech-tagk6span span class=tech-tagOraclespan
+                    div
+                    a href=httpsgithub.comyour-idjesiyo class=inline-flex items-center font-bold text-slate-900 hovertext-blue-600
+                        View Repository i class=fa-solid fa-arrow-right ml-2i
+                    a
+                div
+                div class=bg-slate-200 rounded-3xl aspect-video flex items-center justify-center text-slate-400 font-boldProject Image  PPT Linkdiv
+            div
+
+            div class=grid mdgrid-cols-2 gap-12 items-center
+                div class=order-2 mdorder-1 bg-slate-200 rounded-3xl aspect-video flex items-center justify-center text-slate-400 font-boldProject Image  PPT Linkdiv
+                div class=order-1 mdorder-2
+                    span class=text-emerald-600 font-boldStudy Managementspan
+                    h3 class=text-4xl font-black mt-2 mb-6DeveryTimeh3
+                    p class=text-slate-600 mb-8 leading-relaxed
+                        ServletJSP 기반의 스터디 관리 플랫폼입니다. 
+                        트리거를 활용한 DB 무결성 확보와 strongFetch APIstrong를 이용한 비동기 To-Do 상태 관리를 통해 사용자 경험을 최적화했습니다.
+                    p
+                    div class=flex flex-wrap gap-2 mb-8
+                        span class=tech-tagServletJSPspan span class=tech-tagOracle 21cspan 
+                        span class=tech-tagFullCalendarspan span class=tech-tagFetch APIspan 
+                        span class=tech-tagTailwind CSSspan
+                    div
+                    a href=httpsgithub.comyour-iddeverytime class=inline-flex items-center font-bold text-slate-900 hovertext-emerald-600
+                        View Repository i class=fa-solid fa-arrow-right ml-2i
+                    a
+                div
+            div
+        div
+    section
+
+    footer class=py-12 bg-white border-t text-center text-slate-400 text-sm
+        p&copy; 2026 Kim Min-do. All rights reserved.p
+    footer
+
+body
+html
