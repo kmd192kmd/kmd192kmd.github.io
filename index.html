@@ -9,123 +9,624 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Pretendard:wght@400;700;900&display=swap');
         body { font-family: 'Pretendard', sans-serif; scroll-behavior: smooth; }
-        .tech-tag { @apply px-3 py-1 bg-slate-100 text-slate-600 rounded-full text-sm font-medium; }
-        .project-img-wrapper { @apply relative overflow-hidden rounded-3xl shadow-lg border border-slate-200 aspect-video group; }
-        .project-img-wrapper img { @apply w-full h-full object-cover transition-transform duration-500 group-hover:scale-105; }
-        .overlay { @apply absolute inset-0 bg-slate-900/60 flex items-center justify-center opacity-0 transition-opacity duration-300 group-hover:opacity-100; }
+        .tech-pill { @apply px-3 py-1 bg-slate-100 border border-slate-200 text-slate-700 rounded-md text-xs font-bold shadow-sm; }
+        .section-divider { @apply w-24 h-1.5 bg-blue-600 mx-auto rounded-full my-10; }
+        
+        /* 자세히보기 펼침 애니메이션용 */
+        .detail-content {
+            display: grid;
+            grid-template-rows: 0fr;
+            transition: grid-template-rows 0.4s ease-out;
+        }
+        .detail-content.open {
+            grid-template-rows: 1fr;
+        }
+        .detail-inner {
+            overflow: hidden;
+            min-height: 0;
+        }
     </style>
 </head>
-<body class="bg-slate-50 text-slate-900">
+<body class="bg-[#F8FAFC] text-slate-900 leading-relaxed relative">
 
-    <header class="min-h-screen flex flex-col justify-center items-center bg-white border-b">
-        <div class="text-center px-4">
-            <span class="text-blue-600 font-bold tracking-widest uppercase">Firefighter to Backend Developer</span>
-            <h1 class="text-6xl md:text-8xl font-black mt-4 mb-8 text-slate-900">김민도<span class="text-blue-600">.</span></h1>
-            <p class="text-xl text-slate-500 max-w-2xl mx-auto leading-relaxed">
-                "질문의 깊이가 설계의 수준을 결정합니다."<br>
-                현장의 안정성을 책임지던 소방관의 집요함으로, 데이터베이스 기초부터 분산 환경까지 흔들림 없는 백엔드 아키텍처를 설계합니다.
+    <header class="min-h-screen flex flex-col justify-center items-center bg-white px-4 relative overflow-hidden">
+        <div class="absolute top-[-10%] right-[-10%] w-[40%] h-[40%] bg-blue-50 rounded-full blur-3xl opacity-50"></div>
+        <div class="absolute bottom-[-10%] left-[-10%] w-[30%] h-[30%] bg-emerald-50 rounded-full blur-3xl opacity-50"></div>
+        
+        <div class="relative text-center z-10">
+            <span class="text-blue-600 font-black tracking-widest uppercase text-sm mb-4 block">Firefighter to Backend Developer</span>
+            <h1 class="text-6xl md:text-8xl font-black mb-8 text-slate-900 tracking-tighter">김민도<span class="text-blue-600">.</span></h1>
+            <p class="text-xl md:text-2xl text-slate-500 max-w-3xl mx-auto font-medium">
+                "끊임없는 질문과 집요함이 설계의 수준을 결정합니다."<br>
+                현장의 안전을 책임지던 소방관의 집요함으로,<br>
+                기초 모델링부터 고성능 동시성 제어까지 단계별로 성장해 왔습니다.
             </p>
             <div class="mt-12 flex flex-wrap gap-4 justify-center">
-                <a href="#projects" class="px-8 py-4 bg-slate-900 text-white font-bold rounded-full hover:bg-blue-600 transition-all">View Projects</a>
-                <a href="https://github.com/kmd192kmd" target="_blank" class="px-8 py-4 border-2 border-slate-200 font-bold rounded-full hover:border-slate-900 transition-all"><i class="fa-brands fa-github mr-2"></i>GitHub</a>
+                <a href="#projects" class="px-10 py-4 bg-slate-900 text-white font-bold rounded-2xl hover:bg-blue-600 transition-all shadow-lg hover:-translate-y-1">View Projects</a>
+                <a href="https://github.com/kmd192kmd" target="_blank" class="px-10 py-4 border-2 border-slate-200 font-bold rounded-2xl hover:border-slate-900 transition-all flex items-center gap-2"><i class="fa-brands fa-github text-xl"></i>GitHub</a>
             </div>
         </div>
     </header>
 
-    <section id="projects" class="py-24 px-4 max-w-6xl mx-auto">
-        <h2 class="text-4xl font-black mb-16 text-center text-slate-900 underline decoration-blue-500 decoration-8 underline-offset-8">Featured Projects</h2>
-        
-        <div class="space-y-32">
-            
-            <div class="grid md:grid-cols-2 gap-12 items-center">
-                <div>
-                    <span class="text-blue-600 font-bold">Auction Platform (3rd Project)</span>
-                    <h3 class="text-4xl font-black mt-2 mb-6">Jesiyo (제시요)</h3>
-                    <p class="text-slate-600 mb-8 leading-relaxed">
-                        WebSocket과 Redis를 활용한 고성능 실시간 경매 플랫폼입니다. 
-                        <strong>Redisson 분산 락</strong>을 통해 동시성 문제를 해결하고, k6 부하 테스트를 통해 응답 속도를 390배 개선했습니다. 오라클 옵티마이저를 유도하는 복합 인덱스 적용으로 쿼리 성능을 극대화했습니다.
-                    </p>
-                    <div class="flex flex-wrap gap-2 mb-8">
-                        <span class="tech-tag">Spring 5</span> <span class="tech-tag">MyBatis</span> 
-                        <span class="tech-tag">Redis</span> <span class="tech-tag">Redisson</span> 
-                        <span class="tech-tag">WebSocket</span> <span class="tech-tag">k6</span> 
-                    </div>
-                    <div class="flex flex-wrap gap-4 items-center mt-6">
-                        <a href="https://github.com/kmd192kmd/spring-jesiyo" target="_blank" class="inline-flex items-center font-bold text-slate-900 hover:text-blue-600">
-                            <i class="fa-brands fa-github mr-2 text-xl"></i> Repository
-                        </a>
-                        <a href="https://www.youtube.com/watch?v=rlyJNYaF8KU&t=92s" target="_blank" class="inline-flex items-center font-bold text-red-600 hover:text-red-800">
-                            <i class="fa-brands fa-youtube mr-2 text-xl"></i> 시연 영상
-                        </a>
-                    </div>
-                </div>
-                <div class="project-img-wrapper">
-                    <img src="jesiyp-index.webp" alt="Jesiyo 프로젝트 메인">
-                    <div class="overlay">
-                        <a href="https://drive.google.com/file/d/1wL54_IFdQj4dniHq0qqZvb4i07WVRI7T/view?usp=drive_link" target="_blank" class="px-6 py-3 bg-white text-blue-600 font-bold rounded-full hover:bg-blue-50 transition-all"><i class="fa-solid fa-file-pdf mr-2"></i>발표 자료 보기</a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="grid md:grid-cols-2 gap-12 items-center">
-                <div class="order-2 md:order-1 project-img-wrapper">
-                    <img src="teamtwo-index.png" alt="DeveryTime 프로젝트 메인">
-                    <div class="overlay">
-                        <a href="https://drive.google.com/file/d/1m34O1Rihn6PNtUWk-eX82wgB9TXsce8_/view?usp=drive_link" target="_blank" class="px-6 py-3 bg-white text-emerald-600 font-bold rounded-full hover:bg-emerald-50 transition-all"><i class="fa-solid fa-file-pdf mr-2"></i>발표 자료 보기</a>
-                    </div>
-                </div>
-                <div class="order-1 md:order-2">
-                    <span class="text-emerald-600 font-bold">Study Management (2nd Project)</span>
-                    <h3 class="text-4xl font-black mt-2 mb-6">DeveryTime</h3>
-                    <p class="text-slate-600 mb-8 leading-relaxed">
-                        Servlet/JSP 기반의 체계적인 스터디 관리 플랫폼입니다. 
-                        트리거를 활용한 DB 무결성 확보와 <strong>Fetch API</strong>를 이용한 비동기 To-Do 상태 관리를 통해 사용자 경험을 최적화했습니다. 단일 책임 원칙(SRP)을 준수하여 MVC 아키텍처를 견고하게 설계했습니다.
-                    </p>
-                    <div class="flex flex-wrap gap-2 mb-8">
-                        <span class="tech-tag">Servlet/JSP</span> <span class="tech-tag">Oracle 21c</span> 
-                        <span class="tech-tag">FullCalendar</span> <span class="tech-tag">Fetch API</span> 
-                        <span class="tech-tag">Tailwind CSS</span>
-                    </div>
-                    <div class="flex items-center mt-6">
-                        <a href="https://github.com/kmd192kmd/teamtwo" target="_blank" class="inline-flex items-center font-bold text-slate-900 hover:text-emerald-600">
-                            <i class="fa-brands fa-github mr-2 text-xl"></i> Repository
-                        </a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="grid md:grid-cols-2 gap-12 items-center">
-                <div>
-                    <span class="text-orange-600 font-bold">Database Architecture (1st Project)</span>
-                    <h3 class="text-4xl font-black mt-2 mb-6">교육센터 운영 관리 시스템</h3>
-                    <p class="text-slate-600 mb-8 leading-relaxed">
-                        교육센터의 모집, 성적, 출결, 사후처리를 통합 관리하는 데이터베이스 시스템입니다. 
-                        데이터 의존성에 따라 테이블을 5단계로 나누어 관계형 모델링을 구축하였으며, <strong>PL/SQL(프로시저, 트리거, 함수)</strong>을 활용해 복잡한 운영 비즈니스 로직을 데이터베이스 단에서 안전하게 처리하도록 설계했습니다.
-                    </p>
-                    <div class="flex flex-wrap gap-2 mb-8">
-                        <span class="tech-tag">Oracle Database 21c</span> <span class="tech-tag">Data Modeling</span> 
-                        <span class="tech-tag">PL/SQL</span> <span class="tech-tag">ANSI-SQL</span>
-                    </div>
-                    <div class="flex items-center mt-6">
-                        <a href="https://github.com/kmd192kmd/Sist_project" target="_blank" class="inline-flex items-center font-bold text-slate-900 hover:text-orange-600">
-                            <i class="fa-brands fa-github mr-2 text-xl"></i> Repository
-                        </a>
-                    </div>
-                </div>
-                <div class="project-img-wrapper">
-                    <img src="sist-erd.png" alt="Sist 교육센터 ERD">
-                    <div class="overlay">
-                        <a href="https://drive.google.com/file/d/1QdUGbWgV11t3Sv5iN3BHGm-0vMfGoJBF/view?usp=drive_link" target="_blank" class="px-6 py-3 bg-white text-orange-600 font-bold rounded-full hover:bg-orange-50 transition-all"><i class="fa-solid fa-file-pdf mr-2"></i>발표 자료 보기</a>
-                    </div>
-                </div>
-            </div>
-
+    <section id="projects" class="py-32 px-4 max-w-7xl mx-auto">
+        <div class="text-center mb-20">
+            <h2 class="text-5xl font-black text-slate-900 tracking-tight">Technical Growth</h2>
+            <p class="text-slate-400 mt-4 text-lg">점진적 성장을 통한 백엔드 아키텍처의 완성</p>
+            <div class="section-divider"></div>
         </div>
+        
+        <div class="bg-white rounded-[2rem] border border-slate-200 overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 mb-16 flex flex-col">
+            <div class="grid lg:grid-cols-12">
+                <div class="lg:col-span-7 p-8 md:p-10 flex flex-col justify-center order-2 lg:order-1 h-full">
+                    <div class="flex flex-wrap justify-between items-start gap-4 mb-6">
+                        <div>
+                            <span class="px-4 py-1.5 bg-orange-100 text-orange-600 rounded-full text-xs font-black uppercase tracking-wider">Step 01. Foundation</span>
+                            <h3 class="text-3xl font-black mt-3 text-slate-900">교육센터 운영 관리 시스템</h3>
+                        </div>
+                        <a href="https://github.com/kmd192kmd/Sist_project" target="_blank" class="flex items-center gap-2 px-4 py-2 bg-slate-50 hover:bg-slate-200 text-slate-700 border border-slate-200 rounded-lg font-bold text-sm transition-colors">
+                            <i class="fa-brands fa-github text-lg"></i> Repository
+                        </a>
+                    </div>
+                    <p class="text-slate-600 mb-6 text-lg">
+                        백엔드 개발의 본질인 <strong>데이터 모델링과 SQL 숙련도</strong>에 집중한 프로젝트입니다. 요구분석부터 순서도, ERD까지 이어지는 데이터 설계를 통해 기초를 다졌습니다.
+                    </p>
+                    <div class="grid sm:grid-cols-2 gap-5 mb-8">
+                        <div class="bg-slate-50 p-5 rounded-2xl border border-slate-100">
+                            <h4 class="font-bold text-slate-900 mb-2"><i class="fa-solid fa-database text-orange-500 mr-2"></i>데이터 설계 역량</h4>
+                            <ul class="text-sm text-slate-500 space-y-1.5 list-disc list-inside">
+                                <li>5단계 데이터 의존성 분석을 통한 계층적 테이블 설계</li>
+                                <li>자바를 활용한 대량의 더미 데이터 생성 및 삽입 프로세스 체득</li>
+                                <li>요구분석서, 테이블 정의서, ERD 등 정교한 산출물 작성</li>
+                            </ul>
+                        </div>
+                        <div class="bg-slate-50 p-5 rounded-2xl border border-slate-100">
+                            <h4 class="font-bold text-slate-900 mb-2"><i class="fa-solid fa-code text-orange-500 mr-2"></i>기술적 성취</h4>
+                            <ul class="text-sm text-slate-500 space-y-1.5 list-disc list-inside">
+                                <li>PL/SQL(프로시저, 트리거)을 통한 복잡한 운영 로직의 DB 캡슐화</li>
+                                <li>ANSI-SQL 표준 준수 및 복합 쿼리 작성을 통한 데이터 추출 최적화</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="flex flex-wrap items-center gap-2 pt-6 mt-auto">
+                        <span class="text-sm font-black text-slate-400 mr-2"><i class="fa-solid fa-layer-group mr-1"></i>사용 기술:</span>
+                        <span class="tech-pill">Oracle 21c</span>
+                        <span class="tech-pill">PL/SQL</span>
+                        <span class="tech-pill">Java DummyGen</span>
+                        <span class="tech-pill">ERD Modeling</span>
+                    </div>
+                </div>
+
+                <div class="lg:col-span-5 relative w-full h-64 lg:h-auto overflow-hidden border-b lg:border-b-0 lg:border-l border-slate-100 group order-1 lg:order-2">
+                    <img src="images/sist/sist-erd.png" alt="Sist 교육센터 ERD" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+                    <div class="absolute inset-0 bg-slate-900/50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        <a href="https://drive.google.com/file/d/1QdUGbWgV11t3Sv5iN3BHGm-0vMfGoJBF/preview" target="_blank" class="px-6 py-3 bg-white text-orange-600 font-bold rounded-xl shadow-lg hover:bg-orange-50 transition-all pointer-events-auto"><i class="fa-solid fa-file-pdf mr-2"></i>발표 자료 보기</a>
+                    </div>
+                </div>
+            </div>
+
+            <button id="btn-p1" onclick="toggleDetail('detail-p1', 'btn-p1')" class="w-full flex items-center justify-between p-6 bg-slate-50 border-t border-slate-200 hover:bg-slate-100 transition-colors group">
+                <div class="flex items-center gap-3">
+                    <i class="fa-solid fa-magnifying-glass-chart text-orange-500 text-xl group-hover:scale-110 transition-transform"></i>
+                    <span class="font-black text-lg text-slate-800">핵심 고민 및 트러블슈팅</span>
+                </div>
+                <div class="flex items-center gap-2 text-slate-600 font-bold text-sm bg-white px-4 py-2 border border-slate-200 rounded-lg shadow-sm group-hover:border-orange-400 group-hover:text-orange-600 transition-all">
+                    <span class="toggle-text">자세히 보기</span>
+                    <i class="fa-solid fa-chevron-down toggle-icon transition-transform"></i>
+                </div>
+            </button>
+
+            <div id="detail-p1" class="detail-content bg-slate-50 border-t border-slate-100">
+                <div class="detail-inner relative">
+                    <div class="p-8 md:p-12 space-y-16">
+                        
+                        <div class="grid lg:grid-cols-2 gap-8 items-center border-b border-slate-200 pb-12">
+                            <div class="space-y-3 text-slate-700 pr-4">
+                                <h4 class="font-black text-2xl text-slate-900 flex items-center gap-2"><span class="text-orange-500 text-3xl">01.</span> 전체 테이블 설계도</h4>
+                                <p class="leading-relaxed text-lg mt-4">초기 요구사항 분석을 바탕으로 설계된 교육센터 운영 시스템의 전체 ERD입니다. 엔티티 간의 복잡한 관계에서 최적의 설계를 찾아내기 위해 노력하였습니다.</p>
+                            </div>
+                            <div class="w-full bg-white rounded-xl border border-slate-200 overflow-hidden shadow-sm hover:shadow-md transition-shadow">
+                                <img src="images/sist/sist-erd.png" alt="전체 테이블 설계도" class="w-full h-auto object-cover zoomable-img">
+                            </div>
+                        </div>
+
+                        <div class="grid lg:grid-cols-2 gap-8 items-center border-b border-slate-200 pb-12">
+                            <div class="space-y-3 text-slate-700 pr-4">
+                                <h4 class="font-black text-2xl text-slate-900 flex items-center gap-2"><span class="text-orange-500 text-3xl">02.</span> 협업 및 문서화 도구</h4>
+                                <p class="leading-relaxed text-lg mt-4">프로젝트의 원활한 진행을 위해 <strong>Figma</strong>를 이용하여 전체 시스템의 흐름과 순서도를 작성했습니다. 또한 <strong>Google Sheets</strong>를 활용해 팀원 간 업무를 분담하고 진행 상태를 실시간으로 공유했습니다.</p>
+                            </div>
+                            <div class="w-full bg-white rounded-xl border border-slate-200 overflow-hidden shadow-sm hover:shadow-md transition-shadow p-2">
+                                <img src="images/sist/협업툴-피그마-구글시트.PNG" alt="협업 툴 (Figma, Google Sheets)" class="w-full h-auto object-cover rounded-lg zoomable-img">
+                            </div>
+                        </div>
+
+                        <div class="grid lg:grid-cols-2 gap-8 items-center border-b border-slate-200 pb-12">
+                            <div class="space-y-3 text-slate-700 pr-4">
+                                <h4 class="font-black text-2xl text-slate-900 flex items-center gap-2"><span class="text-orange-500 text-3xl">03.</span> 테이블 깊이 (Depth) 설계도</h4>
+                                <p class="leading-relaxed text-lg mt-4">테이블 간의 외래키(FK) 참조 관계를 분석하여 데이터 입력 및 삭제 시 의존성 문제가 발생하지 않도록 <strong>5단계의 계층 구조(Depth)</strong>를 설계했습니다. 이를 통해 순차적으로 더미데이터를 삽입하였습니다.</p>
+                            </div>
+                            <div class="w-full bg-white rounded-xl border border-slate-200 overflow-hidden shadow-sm hover:shadow-md transition-shadow p-2">
+                                <img src="images/sist/sist-테이블depth.jpg" alt="테이블 깊이 설계도" class="w-full h-auto object-cover rounded-lg zoomable-img">
+                            </div>
+                        </div>
+
+                        <div class="grid lg:grid-cols-2 gap-8 items-center border-b border-slate-200 pb-12">
+                            <div class="space-y-3 text-slate-700 pr-4">
+                                <h4 class="font-black text-2xl text-slate-900 flex items-center gap-2"><span class="text-orange-500 text-3xl">04.</span> 관계의 재정의</h4>
+                                <p class="leading-relaxed text-lg mt-4">초기 설계에서는 '취업성공수당' 테이블이 '취업상태' 테이블에 종속되어 있었습니다. 하지만 비즈니스 로직상 취업성공수당은 수강생 본인에게 <strong>단 한 번만 지급</strong>됩니다.</p>
+                                <p class="leading-relaxed text-lg">취업상태 컬럼이 변경되는 시점에 수당이 지급되긴 하지만, 일회성 지급이라는 점을 DB단계에서 명확하게 설정할 수 있고 테이블 관계를 변경하더라도 상태컬럼 변경에 따른 지급 로직에는 영향이 없기 때문에 수강생 테이블과 <strong>1:1 관계로 재연결</strong>하여 DB 구조적 단계에서 일회성 지급 제약을 완벽히 구현했습니다.</p>
+                            </div>
+                            <div class="w-full bg-white rounded-xl border border-slate-200 overflow-hidden shadow-sm hover:shadow-md transition-shadow p-2">
+                                <img src="images/sist/sist-테이블구조변경1.PNG" alt="관계의 재정의" class="w-full h-auto object-cover rounded-lg zoomable-img">
+                            </div>
+                        </div>
+
+                        <div class="grid lg:grid-cols-2 gap-8 items-center border-b border-slate-200 pb-12">
+                            <div class="space-y-3 text-slate-700 pr-4">
+                                <h4 class="font-black text-2xl text-slate-900 flex items-center gap-2"><span class="text-orange-500 text-3xl">05.</span> 정규화 vs 반정규화 고찰</h4>
+                                <p class="leading-relaxed text-lg mt-4">시험 테이블 설계 시, '유형'이라는 상태 코드로 필기/실기를 구분(정규화)하면 NULL을 줄이고 확장에 용이하다는 장점이 있습니다.</p>
+                                <p class="leading-relaxed text-lg">하지만 본 시스템의 특성상 새로운 시험 유형이 추가될 가능성이 희박하고, 성적 조회 시 필기와 실기 점수를 동시에 호출하는 경우가 압도적으로 많습니다. 따라서 <strong>조회 성능 향상과 쿼리 단순화를 위해 필기/실기 컬럼을 각각 분리하는 반정규화 모델</strong>을 최종 채택했습니다.</p>
+                            </div>
+                            <div class="w-full bg-white rounded-xl border border-slate-200 overflow-hidden shadow-sm hover:shadow-md transition-shadow p-2">
+                                <img src="images/sist/sist-테이블구조변경2.PNG" alt="정규화 vs 반정규화" class="w-full h-auto object-cover rounded-lg zoomable-img">
+                            </div>
+                        </div>
+
+                        <div class="grid lg:grid-cols-2 gap-8 items-center border-b border-slate-200 pb-12">
+                            <div class="space-y-3 text-slate-700 pr-4">
+                                <h4 class="font-black text-2xl text-slate-900 flex items-center gap-2"><span class="text-orange-500 text-3xl">06.</span> 제약 조건 최적화 (CHECK)</h4>
+                                <p class="leading-relaxed text-lg mt-4">과목별 배점(필기, 실기, 출석)의 합이 100점을 초과하지 않도록 검증하는 로직을 고민했습니다. 초기에는 복잡한 트리거(Trigger)를 사용하여 검증하려 했으나, 트리거 연산이 가져올 오버헤드를 고려했습니다.</p>
+                                <p class="leading-relaxed text-lg">결과적으로 테이블 생성 시 <strong>CHECK (필기+실기+출석 <= 100) 제약 조건</strong>을 명시하는 방식으로 리팩토링하여, DB 성능 최적화와 가독성을 동시에 확보했습니다.</p>
+                            </div>
+                            <div class="w-full bg-white rounded-xl border border-slate-200 overflow-hidden shadow-sm hover:shadow-md transition-shadow p-2">
+                                <img src="images/sist/sist-테이블제약설정.PNG" alt="제약 조건 설정" class="w-full h-auto object-cover rounded-lg zoomable-img">
+                            </div>
+                        </div>
+
+                        <div class="grid lg:grid-cols-2 gap-8 items-center border-b border-slate-200 pb-12">
+                            <div class="space-y-3 text-slate-700 pr-4">
+                                <h4 class="font-black text-2xl text-slate-900 flex items-center gap-2"><span class="text-orange-500 text-3xl">07.</span> PL/SQL: 중도 탈락 처리 로직</h4>
+                                <p class="leading-relaxed text-lg mt-4">출석률 80% 미만인 수강생의 상태를 '중도포기'로 일괄 자동 업데이트하는 프로시저(proc_handle_course_drop)를 구현했습니다.</p>
+                                <p class="leading-relaxed text-lg">근태 산정 방식(지각 3회 누적 시 미출석 1회로 환산)을 처리하기 위해 함수(func_calculate_absence)를 만들어 프로시저 내부에서 호출합니다.</p>
+                            </div>
+                            <div class="w-full bg-white rounded-xl border border-slate-200 overflow-hidden shadow-sm hover:shadow-md transition-shadow p-2">
+                                <img src="images/sist/sist-procedure-중도탈락.PNG" alt="중도 탈락 처리 프로시저" class="w-full h-auto object-cover rounded-lg zoomable-img">
+                            </div>
+                        </div>
+
+                        <div class="grid lg:grid-cols-2 gap-8 items-center border-b border-slate-200 pb-12">
+                            <div class="space-y-3 text-slate-700 pr-4">
+                                <h4 class="font-black text-2xl text-slate-900 flex items-center gap-2"><span class="text-orange-500 text-3xl">08.</span> PL/SQL: 정원 초과 방지 트리거</h4>
+                                <p class="leading-relaxed text-lg mt-4">수강생 등록 시 발생하는 동시성 이슈와 데이터 정합성을 보장하기 위해 정원 확인용 트리거를 설계했습니다.</p>
+                                <p class="leading-relaxed text-lg">수강생이 INSERT 되기 직전에 해당 강의실의 정원(Capacity)과 현재 등록 인원을 실시간으로 조회·비교하여, <strong>정원이 초과될 경우 즉시 RAISE_APPLICATION_ERROR를 발생</strong>시켜 잘못된 데이터 삽입을 차단합니다.</p>
+                            </div>
+                            <div class="w-full bg-white rounded-xl border border-slate-200 overflow-hidden shadow-sm hover:shadow-md transition-shadow p-2">
+                                <img src="images/sist/sist-trigger-정원초과방지.PNG" alt="정원 초과 방지 트리거" class="w-full h-auto object-cover rounded-lg zoomable-img">
+                            </div>
+                        </div>
+
+                        <div class="grid lg:grid-cols-2 gap-8 items-center">
+                            <div class="space-y-3 text-slate-700 pr-4">
+                                <h4 class="font-black text-2xl text-slate-900 flex items-center gap-2"><span class="text-orange-500 text-3xl">09.</span> 프로젝트 후기</h4>
+                                <p class="leading-relaxed text-lg mt-4">이번 프로젝트로 SQL, PL/SQL 활용 능력과 ERD 설계 역량을 키울 수 있었습니다. 조인과 서브쿼리에 대한 이해도가 높아졌고, 막연했던 PL/SQL도 직접 구현해보며 자신감을 얻었습니다.</p>
+                                <p class="leading-relaxed text-lg">앞으로 배워야 할 방대한 내용에 부담도 느꼈지만, 한 번에 완벽하기보단 꾸준히 성장해야 한다는 다짐을 하게 되었습니다. 의견 차이도 있었지만 서로 소통하고 조율하며 협업의 중요성을 배웠고, 혼자서라면 끝까지 해내지 못할 일도 함께할 팀원들이 있다는 것이 정말 큰 의지가 되었습니다.</p>
+                            </div>
+                            <div class="w-full bg-white rounded-xl border border-slate-200 overflow-hidden shadow-sm hover:shadow-md transition-shadow p-2">
+                                <img src="images/sist/sist-후기.PNG" alt="Sist 프로젝트 후기" class="w-full h-auto object-cover rounded-lg zoomable-img">
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="bg-white rounded-[2rem] border border-slate-200 overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 mb-16 flex flex-col">
+            <div class="grid lg:grid-cols-12">
+                <div class="lg:col-span-7 p-8 md:p-10 flex flex-col justify-center order-2 lg:order-1 h-full">
+                    <div class="flex flex-wrap justify-between items-start gap-4 mb-6">
+                        <div>
+                            <span class="px-4 py-1.5 bg-emerald-100 text-emerald-600 rounded-full text-xs font-black uppercase tracking-wider">Step 02. Architecture</span>
+                            <h3 class="text-3xl font-black mt-3 text-slate-900">DeveryTime (학습 관리)</h3>
+                        </div>
+                        <a href="https://github.com/kmd192kmd/teamtwo" target="_blank" class="flex items-center gap-2 px-4 py-2 bg-slate-50 hover:bg-slate-200 text-slate-700 border border-slate-200 rounded-lg font-bold text-sm transition-colors">
+                            <i class="fa-brands fa-github text-lg"></i> Repository
+                        </a>
+                    </div>
+                    <p class="text-slate-600 mb-6 text-lg">
+                        Servlet/JSP 환경에서 <strong>객체지향적 설계(SRP)와 데이터 무결성</strong>을 보장하는 견고한 시스템 구축에 집중했습니다.
+                    </p>
+                    <div class="grid sm:grid-cols-2 gap-5 mb-8">
+                        <div class="bg-slate-50 p-5 rounded-2xl border border-slate-100">
+                            <h4 class="font-bold text-slate-900 mb-2"><i class="fa-solid fa-shield-halved text-emerald-500 mr-2"></i>방어적 프로그래밍</h4>
+                            <ul class="text-sm text-slate-500 space-y-1.5 list-disc list-inside">
+                                <li>단일 책임 원칙(SRP) 기반의 MVC 구조 설계로 코드 유지보수성 향상</li>
+                                <li>스터디 정원 수정 시 현재 참여 인원수와 비교 검증하는 서버단 방어 로직 구축</li>
+                            </ul>
+                        </div>
+                        <div class="bg-slate-50 p-5 rounded-2xl border border-slate-100">
+                            <h4 class="font-bold text-slate-900 mb-2"><i class="fa-solid fa-link text-emerald-500 mr-2"></i>데이터 무결성 관리</h4>
+                            <ul class="text-sm text-slate-500 space-y-1.5 list-disc list-inside">
+                                <li>회원 탈퇴 시 상태만 변경되는 환경을 고려한 연관 데이터 자동 동기화 트리거 구현</li>
+                                <li>스터디 권한별(방장/멤버) 세밀한 접근 제어 및 유효성 검사 로직 설계</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="flex flex-wrap items-center gap-2 pt-6 mt-auto">
+                        <span class="text-sm font-black text-slate-400 mr-2"><i class="fa-solid fa-layer-group mr-1"></i>사용 기술:</span>
+                        <span class="tech-pill">Servlet/JSP</span>
+                        <span class="tech-pill">MVC Model 2</span>
+                        <span class="tech-pill">Oracle 21c</span>
+                        <span class="tech-pill">Trigger</span>
+                        <span class="tech-pill">SRP Design</span>
+                    </div>
+                </div>
+
+                <div class="lg:col-span-5 relative w-full h-64 lg:h-auto overflow-hidden border-b lg:border-b-0 lg:border-l border-slate-100 group order-1 lg:order-2">
+                    <img src="teamtwo-index.png" alt="DeveryTime 메인" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105 zoomable-img cursor-pointer">
+                    <div class="absolute inset-0 bg-slate-900/50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
+                        <a href="https://drive.google.com/file/d/1ChOyOSaUS85DEYiI--vEkxEH8wha1-m6/preview" target="_blank" class="px-6 py-3 bg-white text-emerald-600 font-bold rounded-xl shadow-lg hover:bg-emerald-50 transition-all pointer-events-auto"><i class="fa-solid fa-file-pdf mr-2"></i>발표 자료 보기</a>
+                    </div>
+                </div>
+            </div>
+
+            <button id="btn-p2" onclick="toggleDetail('detail-p2', 'btn-p2')" class="w-full flex items-center justify-between p-6 bg-slate-50 border-t border-slate-200 hover:bg-slate-100 transition-colors group">
+                <div class="flex items-center gap-3">
+                    <i class="fa-solid fa-magnifying-glass-chart text-emerald-500 text-xl group-hover:scale-110 transition-transform"></i>
+                    <span class="font-black text-lg text-slate-800">핵심 고민 및 트러블슈팅</span>
+                </div>
+                <div class="flex items-center gap-2 text-slate-600 font-bold text-sm bg-white px-4 py-2 border border-slate-200 rounded-lg shadow-sm group-hover:border-emerald-400 group-hover:text-emerald-600 transition-all">
+                    <span class="toggle-text">자세히 보기</span>
+                    <i class="fa-solid fa-chevron-down toggle-icon transition-transform"></i>
+                </div>
+            </button>
+
+            <div id="detail-p2" class="detail-content bg-slate-50 border-t border-slate-100">
+                <div class="detail-inner relative">
+                    <div class="p-8 md:p-12 space-y-16">
+                        
+                        <div class="grid lg:grid-cols-2 gap-8 items-center border-b border-slate-200 pb-12">
+                            <div class="space-y-3 text-slate-700 pr-4">
+                                <h4 class="font-black text-2xl text-slate-900 flex items-center gap-2"><span class="text-emerald-500 text-3xl">01.</span> MVC 아키텍처 및 패키지 구조</h4>
+                                <p class="leading-relaxed text-lg mt-4">JSP Model 2 방식의 MVC 아키텍처를 도입하여 <strong>단일 책임 원칙(SRP)</strong>을 준수했습니다.</p>
+                                <p class="leading-relaxed text-lg">요청 흐름 제어(Controller), 비즈니스 로직(Service), 데이터 접근(DAO) 계층으로 패키지를 명확히 분리함으로써 코드의 결합도를 낮추고 유지보수성을 크게 향상시켰습니다.</p>
+                            </div>
+                            <div class="w-full bg-white rounded-xl border border-slate-200 overflow-hidden shadow-sm hover:shadow-md transition-shadow p-2">
+                                <img src="images/deverytime/데브리타임 패키지구조.PNG" alt="패키지 구조" class="w-full h-auto object-cover rounded-lg zoomable-img">
+                            </div>
+                        </div>
+
+                        <div class="grid lg:grid-cols-2 gap-8 items-center border-b border-slate-200 pb-12">
+                            <div class="space-y-3 text-slate-700 pr-4">
+                                <h4 class="font-black text-2xl text-slate-900 flex items-center gap-2"><span class="text-emerald-500 text-3xl">02.</span> 스터디 목록 화면 UI</h4>
+                                <p class="leading-relaxed text-lg mt-4">Tailwind CSS와 Daisy UI를 활용하여 구현하였습니다.</p>
+                                <p class="leading-relaxed text-lg">현재 모집 중인 스터디의 현황, 카테고리, 인원수 등을 한눈에 파악할 수 있도록 카드형 UI를 적용하여 구현하였습니다.</p>
+                            </div>
+                            <div class="w-full bg-white rounded-xl border border-slate-200 overflow-hidden shadow-sm hover:shadow-md transition-shadow p-2">
+                                <img src="images/deverytime/데브리타임 스터디 목록.PNG" alt="스터디 목록 화면" class="w-full h-auto object-cover rounded-lg zoomable-img">
+                            </div>
+                        </div>
+
+                        <div class="grid lg:grid-cols-2 gap-8 items-center border-b border-slate-200 pb-12">
+                            <div class="space-y-3 text-slate-700 pr-4">
+                                <h4 class="font-black text-2xl text-slate-900 flex items-center gap-2"><span class="text-emerald-500 text-3xl">03.</span> 스터디 상세 및 가입 기능</h4>
+                                <p class="leading-relaxed text-lg mt-4">해당 스터디의 세부 목표와 규정을 확인할 수 있는 상세 페이지입니다.</p>
+                                <p class="leading-relaxed text-lg">서버 단에서는 사용자가 이미 가입된 스터디인지 검증하고, 방장 권한일 경우 수정/삭제 기능이 노출되도록 권한 제어(Authorization) 로직을 설계했습니다.</p>
+                            </div>
+                            <div class="w-full bg-white rounded-xl border border-slate-200 overflow-hidden shadow-sm hover:shadow-md transition-shadow p-2">
+                                <img src="images/deverytime/데브리타임 스터디 상세.PNG" alt="스터디 상세 화면" class="w-full h-auto object-cover rounded-lg zoomable-img">
+                            </div>
+                        </div>
+
+                        <div class="grid lg:grid-cols-2 gap-8 items-center border-b border-slate-200 pb-12">
+                            <div class="space-y-3 text-slate-700 pr-4">
+                                <h4 class="font-black text-2xl text-slate-900 flex items-center gap-2"><span class="text-emerald-500 text-3xl">04.</span> 스터디 일정 캘린더 연동</h4>
+                                <p class="leading-relaxed text-lg mt-4">구성원 간의 일정 관리를 위해 <strong>FullCalendar 라이브러리</strong>를 연동했습니다.</p>
+                                <p class="leading-relaxed text-lg">DB에 저장된 일정 데이터를 JSON 형태로 파싱하여 프론트엔드로 전달함으로써, 달력 화면에서 직관적으로 스터디 일정을 확인하고 추가할 수 있습니다.</p>
+                            </div>
+                            <div class="w-full bg-white rounded-xl border border-slate-200 overflow-hidden shadow-sm hover:shadow-md transition-shadow p-2">
+                                <img src="images/deverytime/데브리타임 스터디 일정 목록.PNG" alt="스터디 일정 목록 화면" class="w-full h-auto object-cover rounded-lg zoomable-img">
+                            </div>
+                        </div>
+
+                        <div class="grid lg:grid-cols-2 gap-8 items-center border-b border-slate-200 pb-12">
+                            <div class="space-y-3 text-slate-700 pr-4">
+                                <h4 class="font-black text-2xl text-slate-900 flex items-center gap-2"><span class="text-emerald-500 text-3xl">05.</span> 스터디 일정 상세</h4>
+                                <p class="leading-relaxed text-lg mt-4">특정 일정에 대한 상세 정보와 세부 할 일(To-do) 목록을 관리할 수 있는 화면입니다.</p>
+                                <p class="leading-relaxed text-lg">스터디 구성원 누구나 일정을 관리할 수 있도록 설계하였으며, 상태 변경(checked)에 따른 백엔드 DB 연동을 구현하였습니다.</p>
+                            </div>
+                            <div class="w-full bg-white rounded-xl border border-slate-200 overflow-hidden shadow-sm hover:shadow-md transition-shadow p-2">
+                                <img src="images/deverytime/데브리타임 스터디 일정 상세.PNG" alt="스터디 일정 상세 화면" class="w-full h-auto object-cover rounded-lg zoomable-img">
+                            </div>
+                        </div>
+
+                        <div class="grid lg:grid-cols-2 gap-8 items-center border-b border-slate-200 pb-12">
+                            <div class="space-y-3 text-slate-700 pr-4">
+                                <h4 class="font-black text-2xl text-slate-900 flex items-center gap-2"><span class="text-emerald-500 text-3xl">06.</span> 데이터 무결성 및 관계 모델링</h4>
+                                <p class="leading-relaxed text-lg mt-4">회원과 스터디의 N:N 관계를 해소하기 위해 <strong>'스터디 구성원' 매핑 테이블</strong>을 설계했습니다.</p>
+                                <p class="leading-relaxed text-lg">회원번호 + 스터디번호에 <strong>Unique 제약조건</strong>을 걸어 중복 가입을 방지하고, 부모 스터디 삭제 시 관련된 할 일 및 구성원 데이터가 고아 데이터로 남지 않도록 <strong>ON DELETE CASCADE</strong>를 적용했습니다.</p>
+                            </div>
+                            <div class="w-full bg-white rounded-xl border border-slate-200 overflow-hidden shadow-sm hover:shadow-md transition-shadow p-2">
+                                <img src="images/deverytime/데브리타임 스터디 테이블.PNG" alt="데이터 무결성 관리" class="w-full h-auto object-cover rounded-lg zoomable-img">
+                            </div>
+                        </div>
+
+                        <div class="grid lg:grid-cols-2 gap-8 items-center border-b border-slate-200 pb-12">
+                            <div class="space-y-3 text-slate-700 pr-4">
+                                <h4 class="font-black text-2xl text-slate-900 flex items-center gap-2"><span class="text-emerald-500 text-3xl">07.</span> 논리적 삭제 및 동기화 트리거</h4>
+                                <p class="leading-relaxed text-lg mt-4">서비스 정책 상 회원 탈퇴 시 데이터가 물리적으로 삭제되지 않고 상태(status)만 '탈퇴'로 변경됩니다. 따라서 ON DELETE CASCADE를 활용할 수 없었습니다.</p>
+                                <p class="leading-relaxed text-lg">이를 해결하기 위해, 회원의 상태가 변경될 때 트리거를 발동시켜 해당 회원이 가입된 '스터디 구성원' 데이터를 자동으로 DELETE 처리하여 <strong>데이터 무결성을 보장</strong>하였습니다.</p>
+                            </div>
+                            <div class="w-full bg-white rounded-xl border border-slate-200 overflow-hidden shadow-sm hover:shadow-md transition-shadow p-2">
+                                <img src="images/deverytime/데브리타임 개선사항1.PNG" alt="회원 동기화 트리거" class="w-full h-auto object-cover rounded-lg zoomable-img">
+                            </div>
+                        </div>
+
+                        <div class="grid lg:grid-cols-2 gap-8 items-center border-b border-slate-200 pb-12">
+                            <div class="space-y-3 text-slate-700 pr-4">
+                                <h4 class="font-black text-2xl text-slate-900 flex items-center gap-2"><span class="text-emerald-500 text-3xl">08.</span> 비정규화를 통한 성능 최적화 고찰</h4>
+                                <p class="leading-relaxed text-lg mt-4">가입 시 정원 초과 방지를 위해 조회 및 비교 연산이 포함된 <strong>복합 트리거</strong>를 설계했습니다. 해당 트리거는 더미데이터 삽입 시 최대정원을 초과하지 않도록 하기위해 설계하였기 때문에, 가입하려는 스터디 리스트들을 전부 수집한 후에 정원초과 여부를 확인하는 복잡한 로직을 갖고 있습니다.</p>
+                                <p class="leading-relaxed text-lg">후에 아주 간단하고 강력한 개선방안을 발견하였는데, 스터디 테이블에 <strong>'현재 인원수' 컬럼을 추가하는 비정규화</strong>를 채택하고 단순 UPDATE 트리거와 CHECK 제약조건으로 로직을 단순화하는 것입니다.</p>
+                            </div>
+                            <div class="w-full bg-white rounded-xl border border-slate-200 overflow-hidden shadow-sm hover:shadow-md transition-shadow p-2">
+                                <img src="images/deverytime/데브리타임 개선사항2.PNG" alt="복합 트리거 개선사항" class="w-full h-auto object-cover rounded-lg zoomable-img">
+                            </div>
+                        </div>
+
+                        <div class="grid lg:grid-cols-2 gap-8 items-center">
+                            <div class="space-y-3 text-slate-700 pr-4">
+                                <h4 class="font-black text-2xl text-slate-900 flex items-center gap-2"><span class="text-emerald-500 text-3xl">09.</span> 프로젝트 후기</h4>
+                                <p class="leading-relaxed text-lg mt-4">JSP와 Servlet의 동작 원리와 파라미터 전달방법을 숙달할 수 있었습니다. 프로젝트 초기에 명명법을 통일하지 않아 디버깅에 큰 어려움을 겪으며, <strong>사전 설계와 명명법 통일의 중요성</strong>을 뼈저리게 느꼈습니다.</p>
+                                <p class="leading-relaxed text-lg">어렵게만 느껴졌던 UI/CSS 영역도 직접 다뤄보며 조금 익숙해지게 되었고, Git 브랜치 병렬 작업을 통해 협업 툴을 배울 수 있었습니다. 처음에는 Git 사용법에 익숙하지 않아 큰 어려움을 겪었지만, 익숙해지고 나니 Git없이는 협업이 불가능하다고 느껴질 정도였습니다. 그리고 더미 데이터를 단시간에 생성해야만 했는데, <strong>Oracle 고급 문법을 적용</strong>해보며 활용할 수 있는 DB문법이 굉장히 많고 깊다는 것을 알게된 프로젝였습니다.</p>
+                            </div>
+                            <div class="w-full bg-white rounded-xl border border-slate-200 overflow-hidden shadow-sm hover:shadow-md transition-shadow p-2">
+                                <img src="images/deverytime/데브리타임 후기.PNG" alt="프로젝트 후기" class="w-full h-auto object-cover rounded-lg zoomable-img">
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="bg-white rounded-[2rem] border border-slate-200 overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 mb-16 flex flex-col">
+            <div class="grid lg:grid-cols-12">
+                <div class="lg:col-span-7 p-8 md:p-10 flex flex-col justify-center order-2 lg:order-1 h-full">
+                    <div class="flex flex-wrap justify-between items-start gap-4 mb-6">
+                        <div>
+                            <span class="px-4 py-1.5 bg-blue-100 text-blue-600 rounded-full text-xs font-black uppercase tracking-wider">Step 03. Performance</span>
+                            <h3 class="text-3xl font-black mt-3 text-slate-900">Jesiyo (실시간 경매)</h3>
+                        </div>
+                        <div class="flex flex-wrap gap-2">
+                            <a href="https://github.com/kmd192kmd/spring-jesiyo" target="_blank" class="flex items-center gap-2 px-4 py-2 bg-slate-50 hover:bg-slate-200 text-slate-700 border border-slate-200 rounded-lg font-bold text-sm transition-colors">
+                                <i class="fa-brands fa-github text-lg"></i> Repository
+                            </a>
+                            <a href="https://www.youtube.com/watch?v=rlyJNYaF8KU&t=92s" target="_blank" class="flex items-center gap-2 px-4 py-2 bg-red-50 hover:bg-red-100 text-red-600 border border-red-100 rounded-lg font-bold text-sm transition-colors">
+                                <i class="fa-brands fa-youtube text-lg"></i> 시연 영상
+                            </a>
+                        </div>
+                    </div>
+                    <p class="text-slate-600 mb-6 text-lg">
+                        <strong>실시간 비동기 통신과 동시성 제어</strong>를 통해 고성능 플랫폼을 구현했습니다. 대량 트래픽 상황에서의 성능 최적화와 안정적인 데이터 처리를 경험했습니다.
+                    </p>
+                    <div class="grid sm:grid-cols-2 gap-5 mb-8">
+                        <div class="bg-slate-50 p-5 rounded-2xl border border-slate-100">
+                            <h4 class="font-bold text-slate-900 mb-2"><i class="fa-solid fa-bolt text-blue-500 mr-2"></i>비동기 및 실시간 기술</h4>
+                            <ul class="text-sm text-slate-500 space-y-1.5 list-disc list-inside">
+                                <li>WebSocket/STOMP 기반의 실시간 입찰 및 채팅 시스템 구축</li>
+                                <li>Redis 인메모리 캐싱을 통한 최고가 정보 실시간 조회 속도 390배 개선</li>
+                            </ul>
+                        </div>
+                        <div class="bg-slate-50 p-5 rounded-2xl border border-slate-100">
+                            <h4 class="font-bold text-slate-900 mb-2"><i class="fa-solid fa-microchip text-blue-500 mr-2"></i>성능 및 동시성</h4>
+                            <ul class="text-sm text-slate-500 space-y-1.5 list-disc list-inside">
+                                <li>Redisson 분산 락을 통한 다수 사용자 입찰 데이터 정합성 확보</li>
+                                <li>k6 부하 테스트를 통한 에러율 1% 미만 달성 및 시스템 한계 검증</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="flex flex-wrap items-center gap-2 pt-6 mt-auto">
+                        <span class="text-sm font-black text-slate-400 mr-2"><i class="fa-solid fa-layer-group mr-1"></i>사용 기술:</span>
+                        <span class="tech-pill">Spring 5</span>
+                        <span class="tech-pill">Redis</span>
+                        <span class="tech-pill">Redisson</span>
+                        <span class="tech-pill">WebSocket</span>
+                        <span class="tech-pill">k6 Testing</span>
+                    </div>
+                </div>
+
+                <div class="lg:col-span-5 relative w-full h-64 lg:h-auto overflow-hidden border-b lg:border-b-0 lg:border-l border-slate-100 group order-1 lg:order-2">
+                    <img src="jesiyo-index.webp" alt="Jesiyo 메인" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105 zoomable-img cursor-pointer">
+                    <div class="absolute inset-0 bg-slate-900/50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
+                        <a href="https://drive.google.com/file/d/1wL54_IFdQj4dniHq0qqZvb4i07WVRI7T/preview" target="_blank" class="px-6 py-3 bg-white text-blue-600 font-bold rounded-xl shadow-lg hover:bg-blue-50 transition-all pointer-events-auto"><i class="fa-solid fa-file-pdf mr-2"></i>발표 자료 보기</a>
+                    </div>
+                </div>
+            </div>
+
+            <button id="btn-p3" onclick="toggleDetail('detail-p3', 'btn-p3')" class="w-full flex items-center justify-between p-6 bg-slate-50 border-t border-slate-200 hover:bg-slate-100 transition-colors group">
+                <div class="flex items-center gap-3">
+                    <i class="fa-solid fa-magnifying-glass-chart text-blue-500 text-xl group-hover:scale-110 transition-transform"></i>
+                    <span class="font-black text-lg text-slate-800">핵심 고민 및 트러블슈팅</span>
+                </div>
+                <div class="flex items-center gap-2 text-slate-600 font-bold text-sm bg-white px-4 py-2 border border-slate-200 rounded-lg shadow-sm group-hover:border-blue-400 group-hover:text-blue-600 transition-all">
+                    <span class="toggle-text">자세히 보기</span>
+                    <i class="fa-solid fa-chevron-down toggle-icon transition-transform"></i>
+                </div>
+            </button>
+
+            <div id="detail-p3" class="detail-content bg-slate-50 border-t border-slate-100">
+                <div class="detail-inner relative">
+                    <div class="p-8 md:p-12 space-y-16">
+                        
+                        <div class="grid lg:grid-cols-2 gap-8 items-center border-b border-slate-200 pb-12">
+                            <div class="space-y-3 text-slate-700 pr-4">
+                                <h4 class="font-black text-2xl text-slate-900 flex items-center gap-2"><span class="text-blue-500 text-3xl">01.</span> 시스템 아키텍처 (System Architecture)</h4>
+                                <p class="leading-relaxed text-lg mt-4">클라이언트의 요청이 WAS(Tomcat)를 거쳐 Spring 컨트롤러로 라우팅되는 전체 흐름도입니다.</p>
+                                <p class="leading-relaxed text-lg">일반 HTTP 요청과 WebSocket/STOMP 프로토콜을 분리하여 처리합니다. 특히 고부하 환경에서의 동시성 제어 및 병목 해소를 위해 <strong>Redis 인메모리 캐시와 Redisson 분산 락</strong>을 설계하였으며, 결제(Toss) 및 이메일(SMTP) 등 외부 API 연동을 포함한 구조로 설계했습니다.</p>
+                            </div>
+                            <div class="w-full bg-white rounded-xl border border-slate-200 overflow-hidden shadow-sm hover:shadow-md transition-shadow p-2">
+                                <img src="images/jesiyo/제시요-아키텍처.PNG" alt="시스템 아키텍처" class="w-full h-auto object-cover rounded-lg zoomable-img">
+                            </div>
+                        </div>
+
+                        <div class="grid lg:grid-cols-2 gap-8 items-center border-b border-slate-200 pb-12">
+                            <div class="space-y-3 text-slate-700 pr-4">
+                                <h4 class="font-black text-2xl text-slate-900 flex items-center gap-2"><span class="text-blue-500 text-3xl">02.</span> 일반 경매 목록 구현 화면</h4>
+                                <p class="leading-relaxed text-lg mt-4">현재 진행 중인 다양한 경매 물품들을 한눈에 확인할 수 있는 목록 화면입니다. 직관적인 UI를 통해 상품 이미지, 현재 최고 입찰가, 남은 시간 등의 핵심 정보를 제공합니다.</p>
+                            </div>
+                            <div class="w-full bg-white rounded-xl border border-slate-200 overflow-hidden shadow-sm hover:shadow-md transition-shadow p-2">
+                                <img src="images/jesiyo/제시요-일반경매목록.PNG" alt="일반 경매 목록" class="w-full h-auto object-cover rounded-lg zoomable-img">
+                            </div>
+                        </div>
+
+                        <div class="grid lg:grid-cols-2 gap-8 items-center border-b border-slate-200 pb-12">
+                            <div class="space-y-3 text-slate-700 pr-4">
+                                <h4 class="font-black text-2xl text-slate-900 flex items-center gap-2"><span class="text-blue-500 text-3xl">03.</span> 일반 경매 상세 구현 화면</h4>
+                                <p class="leading-relaxed text-lg mt-4">선택한 경매 물품의 상세 정보를 확인하고 직접 입찰 금액을 입력하여 참여할 수 있는 화면입니다.</p>
+                            </div>
+                            <div class="w-full bg-white rounded-xl border border-slate-200 overflow-hidden shadow-sm hover:shadow-md transition-shadow p-2">
+                                <img src="images/jesiyo/제시요-일반경매상세.PNG" alt="일반 경매 상세" class="w-full h-auto object-cover rounded-lg zoomable-img">
+                            </div>
+                        </div>
+
+                        <div class="grid lg:grid-cols-2 gap-8 items-center border-b border-slate-200 pb-12">
+                            <div class="space-y-3 text-slate-700 pr-4">
+                                <h4 class="font-black text-2xl text-slate-900 flex items-center gap-2"><span class="text-blue-500 text-3xl">04.</span> 실시간 라이브 경매 구현 화면</h4>
+                                <p class="leading-relaxed text-lg mt-4">실시간 스트리밍 방송 화면과 함께 입찰을 진행할 수 있는 라이브 경매 페이지입니다. 우측의 실시간 입찰 현황 및 하단의 채팅 인터페이스를 결합하여 몰입감을 높였습니다.</p>
+                            </div>
+                            <div class="w-full bg-white rounded-xl border border-slate-200 overflow-hidden shadow-sm hover:shadow-md transition-shadow p-2">
+                                <img src="images/jesiyo/제시요-실시간경매.PNG" alt="실시간 라이브 경매" class="w-full h-auto object-cover rounded-lg zoomable-img">
+                            </div>
+                        </div>
+
+                        <div class="grid lg:grid-cols-2 gap-8 items-center border-b border-slate-200 pb-12">
+                            <div class="space-y-3 text-slate-700 pr-4">
+                                <h4 class="font-black text-2xl text-slate-900 flex items-center gap-2"><span class="text-blue-500 text-3xl">05.</span> 경매마스터 테이블 설계</h4>
+                                <p class="leading-relaxed text-lg mt-4">초기 설계에서는 포인트 락(<strong>입찰 시 예치금 락을 걸기위함</strong>) 테이블에 경매테이블FK와 라이브경매테이블FK 간에 배타적 참조 제약조건을 두어 무결성을 확보 -> 경매 테이블, 실시간 경매 테이블의 PK역할을 하는 seq가 auction_master의 PK만을 참조하도록 구조를 개선. 이는 아래와 같은 이점을 갖게됨.</p>
+                                <ul class="text-lg text-slate-600 mt-4 space-y-2 list-disc list-inside">
+                                    <li>PK를 상속하는 모양새로써 객체지향적 다형성(Polymorphism) 구현</li>
+                                    <li>확장에는 열려있고 변경은 최소화하는 구조로써 OCP원칙 구현</li>
+			<li>전역 식별성 보장</li>
+                                    <li>성능 및 트래픽 최적화 - 마스터 테이블의 PK참조 구조는 단순 조회시에는 이점이 없지만, 경매의 식별자(PK)가 나뉘어 있다면 입찰 기록을 남기거나 Redisson 분산 락을 걸 때 경매 타입에 따라 분기 처리를 하고 락 키를 다르게 관리해야 하는 오버헤드가 발생. 마스터 테이블을 통해 전역 PK를 하나로 통일함으로써, 락 관리 로직을 단순화하고 입찰 트랜잭션 속도 최적화. 동시성 처리 성능을 올리는 방향으로 트레이드오프를 맞추었습니다.</li>
+                                </ul>
+                            </div>
+                            <div class="w-full bg-white rounded-xl border border-slate-200 overflow-hidden shadow-sm hover:shadow-md transition-shadow p-2">
+                                <img src="images/jesiyo/제시요-경매테이블.PNG" alt="경매마스터 테이블 설계" class="w-full h-auto object-cover rounded-lg zoomable-img">
+                            </div>
+                        </div>
+
+                        <div class="grid lg:grid-cols-2 gap-8 items-center border-b border-slate-200 pb-12">
+                            <div class="space-y-3 text-slate-700 pr-4">
+                                <h4 class="font-black text-2xl text-slate-900 flex items-center gap-2"><span class="text-blue-500 text-3xl">06.</span> 입찰기록 테이블 설계</h4>
+                                <ul class="text-lg text-slate-600 space-y-4 list-disc list-inside">
+                                    <li>회원과 경매테이블 간의 다대다 관계를 해소하고 기록을 남기기 위해 입찰기록 테이블 설계</li>
+			<li>@Transactional 사용: @Transactional을 사용하여 두 쿼리를 실행하는 경우 하나의 쿼리만 시행되는 일이 없도록 하여 데이터 정합성을 보장하였습니다.</li>
+                                    <li>복합 인덱스 적용: 경매 취소 로직 실행 시 대량의 경매테이블 누적 데이터의 status를 전부 조회하는 경우 발생 가능한 성능 저하를 방지하기 위해 (auction_seq, status) 복합 인덱스를 적용했습니다. 애플리케이션 계층의 쿼리문 수정 없이 오라클 옵티마이저(Optimizer)가 자체적으로 인덱스를 참고하게 됩니다.</li>
+                                </ul>
+                            </div>
+                            <div class="w-full bg-white rounded-xl border border-slate-200 overflow-hidden shadow-sm hover:shadow-md transition-shadow p-2">
+                                <img src="images/jesiyo/제시요-입찰기록테이블.PNG" alt="입찰기록 테이블 설계" class="w-full h-auto object-cover rounded-lg zoomable-img">
+                            </div>
+                        </div>
+
+                        <div class="grid lg:grid-cols-2 gap-8 items-center border-b border-slate-200 pb-12">
+                            <div class="space-y-3 text-slate-700 pr-4">
+                                <h4 class="font-black text-2xl text-slate-900 flex items-center gap-2"><span class="text-blue-500 text-3xl">07.</span> 입찰 시 AJAX를 이용한 화면갱신</h4>
+                                <p class="leading-relaxed text-lg mt-4">입찰 시 클라이언트와 서버간 json 데이터를 주고받아 페이지 전체를 새로고침 하지 않고 필요한 일부분만 받아와 동적으로 화면을 갱신하였습니다.</p>
+                                <p class="leading-relaxed text-lg">또한 웹소켓-브로드캐스팅을 이용하여 같은 화면을 보고있는 다른 이용자의 화면 또한 동적으로 갱신합니다. 해당 프로젝트의 경매에서는 입찰 시 최고입찰가, 최근 입찰기록, 내 입찰 상태를 동적으로 갱신해주고 있습니다.</p>
+                            </div>
+                            <div class="w-full bg-white rounded-xl border border-slate-200 overflow-hidden shadow-sm hover:shadow-md transition-shadow p-2">
+                                <img src="images/jesiyo/제시요-ajax.PNG" alt="AJAX 화면갱신" class="w-full h-auto object-cover rounded-lg zoomable-img">
+                            </div>
+                        </div>
+
+                        <div class="grid lg:grid-cols-2 gap-8 items-center border-b border-slate-200 pb-12">
+                            <div class="space-y-3 text-slate-700 pr-4">
+                                <h4 class="font-black text-2xl text-slate-900 flex items-center gap-2"><span class="text-blue-500 text-3xl">08.</span> K6 부하 테스트 1: 동시성 이슈 및 분산 락</h4>
+                                <p class="leading-relaxed text-lg mt-4">K6 부하 테스트(K-1000: 1000명이 0.1초 간격으로 10초간 입찰을 누르는 부하) 중 다중 입찰 시 동일 가격이 <strong>중복 입찰되는 이슈</strong>를 발견했습니다.</p>
+                                <p class="leading-relaxed text-lg">이를 해결하기 위해 <strong>Redisson 분산 락</strong>을 도입하여 동시 접근 스레드를 제어했습니다. 그 결과, K-5000의 매우 높은 부하 환경에서도 최고가 입찰 로직이 무시되지 않고 지켜지며 데이터 무결성을 확보할 수 있었습니다.</p>
+                            </div>
+                            <div class="w-full bg-white rounded-xl border border-slate-200 overflow-hidden shadow-sm hover:shadow-md transition-shadow p-2">
+                                <img src="images/jesiyo/제시요-k6테스트1.PNG" alt="K6 테스트 1" class="w-full h-auto object-cover rounded-lg zoomable-img">
+                            </div>
+                        </div>
+
+                        <div class="grid lg:grid-cols-2 gap-8 items-center border-b border-slate-200 pb-12">
+                            <div class="space-y-3 text-slate-700 pr-4">
+                                <h4 class="font-black text-2xl text-slate-900 flex items-center gap-2"><span class="text-blue-500 text-3xl">09.</span> K6 부하 테스트 2: 분산 락 병목 및 캐싱 전환</h4>
+                                <p class="leading-relaxed text-lg mt-4">분산 락 도입으로 무결성은 확보했으나, <strong>락 대기 시간(Wait Time) 증가로 인한 전체 응답률 저하</strong> 이슈가 발생했습니다.</p>
+                                <p class="leading-relaxed text-lg">이를 극복하기 위해 기존 DB를 직접 조회하던 최고가 검증 로직을 <strong>Redis 인메모리 캐싱</strong>으로 전환했습니다. 락으로 인한 페널티를 인메모리 I/O 속도로 상쇄한 결과, K-1000 부하 기준 응답률이 92.93%에서 98.61%로 상승하였습니다.</p>
+                            </div>
+		    <div class="w-full bg-white rounded-xl border border-slate-200 overflow-hidden shadow-sm hover:shadow-md transition-shadow p-2">
+                                <img src="images/jesiyo/제시요-k6테스트2.PNG" alt="K6 테스트 2" class="w-full h-auto object-cover rounded-lg zoomable-img">
+                            </div>
+                        </div>
+
+                        <div class="grid lg:grid-cols-2 gap-8 items-center border-b border-slate-200 pb-12">
+                            <div class="space-y-3 text-slate-700 pr-4">
+                                <h4 class="font-black text-2xl text-slate-900 flex items-center gap-2"><span class="text-blue-500 text-3xl">10.</span> K6 부하 테스트 3: 최종 성능 개선 지표</h4>
+                                <p class="leading-relaxed text-lg mt-4">Redis 인메모리 캐싱 도입을 통해 매번 DB 디스크를 조회하던 병목 현상을 제거한 최종 결과 지표입니다.</p>
+                                <ul class="text-lg text-slate-600 mt-4 space-y-2 list-disc list-inside">
+                                    <li><strong>평균 응답 속도:</strong> 794.12ms ➔ 2.01ms (약 390배 단축)</li>
+                                    <li><strong>초당 처리량(TPS):</strong> 1,061건 ➔ 9,593건 (약 9배 증가)</li>
+                                    <li><strong>에러율 방어:</strong> DB 커넥션 풀 고갈 및 락 대기 타임아웃 감소로 에러율 7.06% ➔ 1.38%로 대폭 하락</li>
+			<li><strong>응답률 100%</strong>을 위해서는 메시지큐의 도입이 필요할 것으로 보입니다. 해당 프로젝트에서는 시간부족으로 도입하지 못하여 아쉬움이 남습니다.</li>
+                                </ul>
+                            </div>
+                            <div class="w-full bg-white rounded-xl border border-slate-200 overflow-hidden shadow-sm hover:shadow-md transition-shadow p-2">
+                                <img src="images/jesiyo/제시요-k6테스트3.PNG" alt="K6 테스트 3" class="w-full h-auto object-cover rounded-lg zoomable-img">
+                            </div>
+                        </div>
+
+                        <div class="grid lg:grid-cols-2 gap-8 items-center">
+                            <div class="space-y-3 text-slate-700 pr-4">
+                                <h4 class="font-black text-2xl text-slate-900 flex items-center gap-2"><span class="text-blue-500 text-3xl">11.</span> 프로젝트 후기</h4>
+                                <p class="leading-relaxed text-lg mt-4">이번 프로젝트는 단순한 구현을 넘어 '시스템 아키텍처 설계'와 '동시성 제어'라는 백엔드의 핵심 과제를 깊이 있게 다룬 경험이었습니다. 특히 분산 락과 인메모리 캐싱을 도입하며 무결성과 응답 속도 사이의 트레이드오프(Trade-off)를 직접 해결하고 성능을 대폭 개선했습니다.</p>
+                                <p class="leading-relaxed text-lg">그리고 AI 시대의 '개발자의 역할'에 대해 고민해보게 되었습니다. CSS작업과 처음 써보는 Redis 코드 구현에서 Ai가 시간을 많이 단축해준 덕분에 아키텍처 설계와 성능개선에 집중할 수 있었지만, 발생가능한 문제점을 예상하고 변경점에 따른 트레이드 오프(Trade-off)를 결정하고 사람들을 설득하는 것은 결국 개발자의 몫이었습니다. 그렇기에 Ai시대를 살아가는 개발자로써 Ai가 만들어준 의견을 맹목적으로 받아들이는 것이 아니라, 집요하게 의심, 비판하고 학습해야한다는 생각이 들었고, 집요하게 의심하고 질문하는 것은 저의 가장 큰 장점입니다.</p>
+                            </div>
+                            <div class="w-full bg-white rounded-xl border border-slate-200 overflow-hidden shadow-sm hover:shadow-md transition-shadow p-2">
+                                <img src="images/jesiyo/제시요-후기.PNG" alt="Jesiyo 프로젝트 후기" class="w-full h-auto object-cover rounded-lg zoomable-img">
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </section>
 
-    <footer class="py-12 bg-white border-t text-center text-slate-400 text-sm">
-        <p>&copy; 2026 Kim Min-do. All rights reserved.</p>
+    <footer class="py-20 bg-white border-t border-slate-100 text-center">
+        <p class="text-slate-400 font-bold mb-4">"현장의 안전을 책임지던 소방관의 정신으로 시스템의 안정성을 책임지겠습니다."</p>
+        <p class="text-slate-300 text-sm">&copy; 2026 Kim Min-do. All rights reserved.</p>
     </footer>
 
+    <div id="imageModal" class="fixed inset-0 z-[100] hidden flex-col items-center justify-center bg-black/80 backdrop-blur-sm transition-opacity duration-300 opacity-0" onclick="closeImageModal()">
+        <button onclick="closeImageModal()" class="absolute top-6 right-8 text-white text-4xl font-bold hover:text-gray-300 transition-colors">&times;</button>
+        <img id="modalImage" src="" alt="" class="max-w-[90vw] max-h-[85vh] object-contain rounded-xl shadow-2xl" onclick="event.stopPropagation()">
+        <div id="modalCaption" class="text-white mt-4 text-xl font-bold tracking-wide"></div>
+    </div>
+
+    <script>
+        // 기존 토글 함수
+        function toggleDetail(targetId, btnId) {
+            const target = document.getElementById(targetId);
+            const btn = document.getElementById(btnId);
+            const textSpan = btn.querySelector('.toggle-text');
+            const icon = btn.querySelector('.toggle-icon');
+            
+            if (target.classList.contains('open')) {
+                target.classList.remove('open');
+                textSpan.innerText = '자세히 보기';
+                icon.classList.remove('fa-chevron-up');
+                icon.classList.add('fa-chevron-down');
+            } else {
+                target.classList.add('open');
+                textSpan.innerText = '접기';
+                icon.classList.remove('fa-chevron-down');
+                icon.classList.add('fa-chevron-up');
+            }
+        }
+
+    </script>
 </body>
 </html>
