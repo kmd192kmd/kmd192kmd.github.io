@@ -25,6 +25,29 @@
             overflow: hidden;
             min-height: 0;
         }
+
+        /* 이미지 확대(줌) 기능 스타일 */
+        .zoomable-img {
+            cursor: pointer;
+            transition: transform 0.3s ease, filter 0.3s ease, box-shadow 0.3s ease;
+        }
+        .zoomable-img:hover {
+            transform: scale(1.02);
+            filter: brightness(0.95);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+        #modalImage {
+            transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            cursor: zoom-in;
+            user-select: none;
+            -webkit-user-drag: none;
+        }
+        #modalImage.zoomed {
+            cursor: grab;
+        }
+        #modalImage.zoomed:active {
+            cursor: grabbing;
+        }
     </style>
 </head>
 <body class="bg-[#F8FAFC] text-slate-900 leading-relaxed relative">
@@ -629,6 +652,174 @@
                 icon.classList.add('fa-chevron-up');
             }
         }
+
+        // 이미지 모달 및 확대 기능
+        const modal = document.getElementById('imageModal');
+        const modalImg = document.getElementById('modalImage');
+        const modalCaption = document.getElementById('modalCaption');
+
+        let isZoomed = false;
+        let isDragging = false;
+        let startX = 0;
+        let startY = 0;
+        let translateX = 0;
+        let translateY = 0;
+        let dragOccurred = false;
+
+        function resetZoom() {
+            isZoomed = false;
+            isDragging = false;
+            dragOccurred = false;
+            translateX = 0;
+            translateY = 0;
+            if (modalImg) {
+                modalImg.style.transform = 'none';
+                modalImg.classList.remove('zoomed');
+                modalImg.style.transition = 'transform 0.3s ease';
+                modalImg.style.cursor = 'zoom-in';
+            }
+        }
+
+        function openImageModal(src, alt) {
+            if (!modal || !modalImg || !modalCaption) return;
+            
+            modalImg.src = src;
+            modalImg.alt = alt;
+            modalCaption.textContent = alt || '';
+            
+            resetZoom();
+            
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+            
+            // Reflow 강제 실행하여 트랜지션 애니메이션 활성화
+            modal.offsetHeight;
+            
+            modal.classList.remove('opacity-0');
+            modal.classList.add('opacity-100');
+            
+            document.body.style.overflow = 'hidden'; // 배경 스크롤 방지
+        }
+
+        function closeImageModal() {
+            if (!modal) return;
+            
+            modal.classList.remove('opacity-100');
+            modal.classList.add('opacity-0');
+            
+            resetZoom();
+            
+            setTimeout(() => {
+                modal.classList.remove('flex');
+                modal.classList.add('hidden');
+                document.body.style.overflow = ''; // 배경 스크롤 복구
+            }, 300);
+        }
+
+        // ESC 키 입력 시 모달 닫기
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && modal && !modal.classList.contains('hidden')) {
+                closeImageModal();
+            }
+        });
+
+        // 모달 이미지 확대/축소 및 드래그 제어
+        if (modalImg) {
+            modalImg.addEventListener('click', (e) => {
+                e.stopPropagation();
+                if (dragOccurred) {
+                    dragOccurred = false;
+                    return;
+                }
+                
+                if (isZoomed) {
+                    resetZoom();
+                } else {
+                    isZoomed = true;
+                    modalImg.classList.add('zoomed');
+                    modalImg.style.transform = 'scale(2)';
+                }
+            });
+
+            // 마우스 드래그 이동 (PC)
+            modalImg.addEventListener('mousedown', (e) => {
+                if (!isZoomed) return;
+                isDragging = true;
+                dragOccurred = false;
+                startX = e.clientX - translateX;
+                startY = e.clientY - translateY;
+                modalImg.style.transition = 'none';
+                modalImg.style.cursor = 'grabbing';
+            });
+
+            window.addEventListener('mousemove', (e) => {
+                if (!isDragging) return;
+                e.preventDefault();
+                const x = e.clientX - startX;
+                const y = e.clientY - startY;
+                
+                if (Math.abs(x - translateX) > 5 || Math.abs(y - translateY) > 5) {
+                    dragOccurred = true;
+                }
+                
+                translateX = x;
+                translateY = y;
+                modalImg.style.transform = `scale(2) translate(${translateX / 2}px, ${translateY / 2}px)`;
+            });
+
+            window.addEventListener('mouseup', () => {
+                if (isDragging) {
+                    isDragging = false;
+                    modalImg.style.transition = 'transform 0.3s ease';
+                    if (isZoomed) {
+                        modalImg.style.cursor = 'grab';
+                    }
+                }
+            });
+
+            // 터치 드래그 이동 (모바일)
+            modalImg.addEventListener('touchstart', (e) => {
+                if (!isZoomed) return;
+                isDragging = true;
+                dragOccurred = false;
+                const touch = e.touches[0];
+                startX = touch.clientX - translateX;
+                startY = touch.clientY - translateY;
+                modalImg.style.transition = 'none';
+            });
+
+            window.addEventListener('touchmove', (e) => {
+                if (!isDragging) return;
+                const touch = e.touches[0];
+                const x = touch.clientX - startX;
+                const y = touch.clientY - startY;
+                
+                if (Math.abs(x - translateX) > 5 || Math.abs(y - translateY) > 5) {
+                    dragOccurred = true;
+                }
+                
+                translateX = x;
+                translateY = y;
+                modalImg.style.transform = `scale(2) translate(${translateX / 2}px, ${translateY / 2}px)`;
+            });
+
+            window.addEventListener('touchend', () => {
+                if (isDragging) {
+                    isDragging = false;
+                    modalImg.style.transition = 'transform 0.3s ease';
+                }
+            });
+        }
+
+        // 페이지 로드 완료 시 모든 zoomable-img에 클릭 이벤트 연결
+        document.addEventListener('DOMContentLoaded', () => {
+            const zoomableImages = document.querySelectorAll('.zoomable-img');
+            zoomableImages.forEach(img => {
+                img.addEventListener('click', () => {
+                    openImageModal(img.src, img.alt);
+                });
+            });
+        });
     </script>
 </body>
 </html>
