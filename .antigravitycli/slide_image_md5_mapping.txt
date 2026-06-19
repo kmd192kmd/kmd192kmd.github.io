@@ -1,0 +1,205 @@
+=== Slide 1 ===
+  Title search: '끊임없는 질문과 집요함이 프로그램의 설계를 탄탄하게 만듭니다.'
+    Shape 0 (Fill Picture Error): 'FillFormat' object has no attribute 'image'
+    Shape 1 (Fill Picture Error): 'FillFormat' object has no attribute 'image'
+    Shape 2 (Fill Picture Error): 'FillFormat' object has no attribute 'image'
+
+=== Slide 2 ===
+  Title search: '교육센터 운영 관리 시스템(Sist_project)'
+    Shape 1 (Fill Picture Error): 'FillFormat' object has no attribute 'image'
+    Shape 2 (Fill Picture Error): 'FillFormat' object has no attribute 'image'
+    Shape 3 (Fill Picture Error): 'FillFormat' object has no attribute 'image'
+    Shape 5 (Fill Picture Error): 'FillFormat' object has no attribute 'image'
+    Shape 7 (Fill Picture Error): 'FillFormat' object has no attribute 'image'
+
+=== Slide 3 ===
+  Title search: '전체 테이블 설계도 / 테이블 깊이 설계도'
+    Shape 1 (Fill Picture Error): 'FillFormat' object has no attribute 'image'
+    Shape 2 (Fill Picture Error): 'FillFormat' object has no attribute 'image'
+    Shape 3 (Fill Picture Error): 'FillFormat' object has no attribute 'image'
+    Shape 4 (Fill Picture Error): 'FillFormat' object has no attribute 'image'
+    Shape 5 (Fill Picture Error): 'FillFormat' object has no attribute 'image'
+
+=== Slide 4 ===
+  Title search: '관계의 재정의'
+    Shape 1 (Fill Picture Error): 'FillFormat' object has no attribute 'image'
+    Shape 2 (Fill Picture Error): 'FillFormat' object has no attribute 'image'
+    Shape 3 (Fill Picture Error): 'FillFormat' object has no attribute 'image'
+    Shape 4 (Fill Picture Error): 'FillFormat' object has no attribute 'image'
+    Shape 5 (Fill Picture Error): 'FillFormat' object has no attribute 'image'
+
+=== Slide 5 ===
+  Title search: '정규화 vs 반정규화 고찰'
+    Shape 1 (Fill Picture Error): 'FillFormat' object has no attribute 'image'
+    Shape 2 (Fill Picture Error): 'FillFormat' object has no attribute 'image'
+    Shape 3 (Fill Picture Error): 'FillFormat' object has no attribute 'image'
+    Shape 5 (Fill Picture Error): 'FillFormat' object has no attribute 'image'
+    Shape 6 (Fill Picture Error): 'FillFormat' object has no attribute 'image'
+    Shape 7 (Fill Picture Error): 'FillFormat' object has no attribute 'image'
+    Shape 8 (Fill Picture Error): 'FillFormat' object has no attribute 'image'
+
+=== Slide 6 ===
+  Title search: '제약 조건 최적화'
+    Shape 1 (Fill Picture Error): 'FillFormat' object has no attribute 'image'
+    Shape 2 (Fill Picture Error): 'FillFormat' object has no attribute 'image'
+    Shape 3 (Fill Picture Error): 'FillFormat' object has no attribute 'image'
+    Shape 5 (Fill Picture Error): 'FillFormat' object has no attribute 'image'
+    Shape 6 (Fill Picture Error): 'FillFormat' object has no attribute 'image'
+
+=== Slide 7 ===
+  Title search: '정원 초과 방지 트리거'
+    Shape 1 (Fill Picture Error): 'FillFormat' object has no attribute 'image'
+    Shape 2 (Fill Picture Error): 'FillFormat' object has no attribute 'image'
+    Shape 3 (Fill Picture Error): 'FillFormat' object has no attribute 'image'
+    Shape 4 (Fill Picture Error): 'FillFormat' object has no attribute 'image'
+    Shape 5 (Fill Picture Error): 'FillFormat' object has no attribute 'image'
+
+=== Slide 8 ===
+  Title search: '프로젝트 후기'
+    Shape 1 (Fill Picture Error): 'FillFormat' object has no attribute 'image'
+    Shape 2 (Fill Picture Error): 'FillFormat' object has no attribute 'image'
+    Shape 3 (Fill Picture Error): 'FillFormat' object has no attribute 'image'
+
+=== Slide 9 ===
+  Title search: '학습관리 사이트(DeveryTime)'
+    Shape 1 (Fill Picture Error): 'FillFormat' object has no attribute 'image'
+    Shape 2 (Fill Picture Error): 'FillFormat' object has no attribute 'image'
+    Shape 3 (Fill Picture Error): 'FillFormat' object has no attribute 'image'
+    Shape 6 (Fill Picture Error): 'FillFormat' object has no attribute 'image'
+    Shape 7 (Fill Picture Error): 'FillFormat' object has no attribute 'image'
+
+=== Slide 10 ===
+  Title search: 'MVC 아키텍처 및 패키지 구조'
+    Shape 1 (Fill Picture Error): 'FillFormat' object has no attribute 'image'
+    Shape 2 (Fill Picture Error): 'FillFormat' object has no attribute 'image'
+    Shape 3 (Fill Picture Error): 'FillFormat' object has no attribute 'image'
+    Shape 4 (Fill Picture Error): 'FillFormat' object has no attribute 'image'
+    Shape 10 (Fill Picture Error): 'FillFormat' object has no attribute 'image'
+
+=== Slide 11 ===
+  Title search: '권한별 분기 및 상태표시'
+    Shape 1 (Fill Picture Error): 'FillFormat' object has no attribute 'image'
+    Shape 2 (Fill Picture Error): 'FillFormat' object has no attribute 'image'
+    Shape 3 (Fill Picture Error): 'FillFormat' object has no attribute 'image'
+    Shape 7 (Fill Picture Error): 'FillFormat' object has no attribute 'image'
+    Shape 8 (Fill Picture Error): 'FillFormat' object has no attribute 'image'
+
+=== Slide 12 ===
+  Title search: '라이브러리 데이터 바인딩 & 커스터마이징'
+    Shape 1 (Fill Picture Error): 'FillFormat' object has no attribute 'image'
+    Shape 2 (Fill Picture Error): 'FillFormat' object has no attribute 'image'
+    Shape 3 (Fill Picture Error): 'FillFormat' object has no attribute 'image'
+    Shape 8 (Fill Picture Error): 'FillFormat' object has no attribute 'image'
+
+=== Slide 13 ===
+  Title search: '비동기 통신(AJAX)과 상태 정합성'
+    Shape 1 (Fill Picture Error): 'FillFormat' object has no attribute 'image'
+    Shape 2 (Fill Picture Error): 'FillFormat' object has no attribute 'image'
+    Shape 3 (Fill Picture Error): 'FillFormat' object has no attribute 'image'
+    Shape 8 (Fill Picture Error): 'FillFormat' object has no attribute 'image'
+
+=== Slide 14 ===
+  Title search: '데이터 무결성 및 관계 모델링'
+    Shape 1 (Fill Picture Error): 'FillFormat' object has no attribute 'image'
+    Shape 2 (Fill Picture Error): 'FillFormat' object has no attribute 'image'
+    Shape 3 (Fill Picture Error): 'FillFormat' object has no attribute 'image'
+    Shape 4 (Fill Picture Error): 'FillFormat' object has no attribute 'image'
+
+=== Slide 15 ===
+  Title search: '논리적 삭제 및 동기화 트리거 개선방안'
+    Shape 1 (Fill Picture Error): 'FillFormat' object has no attribute 'image'
+    Shape 2 (Fill Picture Error): 'FillFormat' object has no attribute 'image'
+    Shape 3 (Fill Picture Error): 'FillFormat' object has no attribute 'image'
+    Shape 8 (Fill Picture Error): 'FillFormat' object has no attribute 'image'
+
+=== Slide 16 ===
+  Title search: '비정규화를 통한 성능 최적화 고찰'
+    Shape 1 (Fill Picture Error): 'FillFormat' object has no attribute 'image'
+    Shape 2 (Fill Picture Error): 'FillFormat' object has no attribute 'image'
+    Shape 3 (Fill Picture Error): 'FillFormat' object has no attribute 'image'
+    Shape 4 (Fill Picture Error): 'FillFormat' object has no attribute 'image'
+
+=== Slide 17 ===
+  Title search: '프로젝트 후기'
+    Shape 1 (Fill Picture Error): 'FillFormat' object has no attribute 'image'
+    Shape 2 (Fill Picture Error): 'FillFormat' object has no attribute 'image'
+    Shape 3 (Fill Picture Error): 'FillFormat' object has no attribute 'image'
+
+=== Slide 18 ===
+  Title search: '경매/중고 거래 사이트(Jesiyo)'
+    Shape 1 (Fill Picture Error): 'FillFormat' object has no attribute 'image'
+    Shape 2 (Fill Picture Error): 'FillFormat' object has no attribute 'image'
+    Shape 3 (Fill Picture Error): 'FillFormat' object has no attribute 'image'
+    Shape 6 (Fill Picture Error): 'FillFormat' object has no attribute 'image'
+    Shape 7 (Fill Picture Error): 'FillFormat' object has no attribute 'image'
+
+=== Slide 19 ===
+  Title search: '시스템 아키텍처'
+    Shape 1 (Fill Picture Error): 'FillFormat' object has no attribute 'image'
+    Shape 2 (Fill Picture Error): 'FillFormat' object has no attribute 'image'
+    Shape 3 (Fill Picture Error): 'FillFormat' object has no attribute 'image'
+    Shape 4 (Fill Picture Error): 'FillFormat' object has no attribute 'image'
+
+=== Slide 20 ===
+  Title search: '클라이언트 단 타이머 렌더링'
+    Shape 1 (Fill Picture Error): 'FillFormat' object has no attribute 'image'
+    Shape 2 (Fill Picture Error): 'FillFormat' object has no attribute 'image'
+    Shape 3 (Fill Picture Error): 'FillFormat' object has no attribute 'image'
+    Shape 4 (Fill Picture Error): 'FillFormat' object has no attribute 'image'
+
+=== Slide 21 ===
+  Title search: '프론트엔드 방어 로직 및 부분 렌더링'
+    Shape 1 (Fill Picture Error): 'FillFormat' object has no attribute 'image'
+    Shape 2 (Fill Picture Error): 'FillFormat' object has no attribute 'image'
+    Shape 3 (Fill Picture Error): 'FillFormat' object has no attribute 'image'
+    Shape 4 (Fill Picture Error): 'FillFormat' object has no attribute 'image'
+
+=== Slide 22 ===
+  Title search: '동시성 제어 및 캐싱 적용'
+    Shape 1 (Fill Picture Error): 'FillFormat' object has no attribute 'image'
+    Shape 2 (Fill Picture Error): 'FillFormat' object has no attribute 'image'
+    Shape 3 (Fill Picture Error): 'FillFormat' object has no attribute 'image'
+    Shape 4 (Fill Picture Error): 'FillFormat' object has no attribute 'image'
+
+=== Slide 23 ===
+  Title search: 'K6 부하 테스트 1: 동시성 이슈 및 분산 락'
+    Shape 1 (Fill Picture Error): 'FillFormat' object has no attribute 'image'
+    Shape 2 (Fill Picture Error): 'FillFormat' object has no attribute 'image'
+    Shape 3 (Fill Picture Error): 'FillFormat' object has no attribute 'image'
+    Shape 4 (Fill Picture Error): 'FillFormat' object has no attribute 'image'
+    Shape 5 (Fill Picture Error): 'FillFormat' object has no attribute 'image'
+
+=== Slide 24 ===
+  Title search: 'K6 부하 테스트 2: 분산 락 병목 및 캐싱 전환'
+    Shape 1 (Fill Picture Error): 'FillFormat' object has no attribute 'image'
+    Shape 2 (Fill Picture Error): 'FillFormat' object has no attribute 'image'
+    Shape 3 (Fill Picture Error): 'FillFormat' object has no attribute 'image'
+    Shape 5 (Fill Picture Error): 'FillFormat' object has no attribute 'image'
+    Shape 6 (Fill Picture Error): 'FillFormat' object has no attribute 'image'
+
+=== Slide 25 ===
+  Title search: '슈퍼타입 테이블 설계'
+    Shape 1 (Fill Picture Error): 'FillFormat' object has no attribute 'image'
+    Shape 2 (Fill Picture Error): 'FillFormat' object has no attribute 'image'
+    Shape 3 (Fill Picture Error): 'FillFormat' object has no attribute 'image'
+    Shape 4 (Fill Picture Error): 'FillFormat' object has no attribute 'image'
+
+=== Slide 26 ===
+  Title search: '입찰기록 테이블 설계'
+    Shape 1 (Fill Picture Error): 'FillFormat' object has no attribute 'image'
+    Shape 2 (Fill Picture Error): 'FillFormat' object has no attribute 'image'
+    Shape 3 (Fill Picture Error): 'FillFormat' object has no attribute 'image'
+    Shape 4 (Fill Picture Error): 'FillFormat' object has no attribute 'image'
+
+=== Slide 27 ===
+  Title search: '프로젝트 후기'
+    Shape 1 (Fill Picture Error): 'FillFormat' object has no attribute 'image'
+    Shape 2 (Fill Picture Error): 'FillFormat' object has no attribute 'image'
+    Shape 3 (Fill Picture Error): 'FillFormat' object has no attribute 'image'
+
+=== Slide 28 ===
+  Title search: '끊임없는 질문과 집요함이 프로그램의 설계를 탄탄하게 만듭니다.'
+    Shape 0 (Fill Picture Error): 'FillFormat' object has no attribute 'image'
+    Shape 1 (Fill Picture Error): 'FillFormat' object has no attribute 'image'
+    Shape 2 (Fill Picture Error): 'FillFormat' object has no attribute 'image'
+
